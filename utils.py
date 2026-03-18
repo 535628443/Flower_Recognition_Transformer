@@ -23,6 +23,7 @@ def plot_loss_curves(results):
     test_loss = results['val_loss']
     accuracy = results['train_acc']
     test_accuracy = results['val_acc']
+
     epochs = range(len(results['train_loss']))
 
     plt.figure(figsize=(15, 7))
@@ -50,3 +51,15 @@ def plot_loss_curves(results):
     os.makedirs("results", exist_ok=True)
     plt.savefig('results/loss_curves.png')
     print("[INFO] 训练曲线已保存至 results/loss_curves.png")
+
+def plot_confusion_matrix(y_true, y_pred, classes):
+    """绘制混淆矩阵并保存"""
+    cm = confusion_matrix(y_true, y_pred)
+    plt.figure(figsize=(10, 8))
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=classes, yticklabels=classes)
+    plt.title('Confusion Matrix')
+    plt.ylabel('True Label')
+    plt.xlabel('Predicted Label')
+    os.makedirs("results", exist_ok=True)
+    plt.savefig('results/confusion_matrix.png')
+    print("[INFO] 混淆矩阵已保存至 results/confusion_matrix.png")
