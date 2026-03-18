@@ -48,8 +48,9 @@ def plot_loss_curves(results):
     plt.legend()
  
     # 确保保存目录存在
-    os.makedirs("results", exist_ok=True)
-    plt.savefig('results/loss_curves.png')
+    path = Path("results")
+    path.mkdir(parents=True, exist_ok=True)
+    plt.savefig(path / "loss_curves.png")
     print("[INFO] 训练曲线已保存至 results/loss_curves.png")
 
 def plot_confusion_matrix(y_true, y_pred, classes):
@@ -60,6 +61,8 @@ def plot_confusion_matrix(y_true, y_pred, classes):
     plt.title('Confusion Matrix')
     plt.ylabel('True Label')
     plt.xlabel('Predicted Label')
-    os.makedirs("results", exist_ok=True)
-    plt.savefig('results/confusion_matrix.png')
+    # os.makedirs("results", exist_ok=True)
+    path = Path("results")
+    path.mkdir(parents=True, exist_ok=True)
+    plt.savefig(path / "confusion_matrix.png")
     print("[INFO] 混淆矩阵已保存至 results/confusion_matrix.png")
