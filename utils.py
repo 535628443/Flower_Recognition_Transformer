@@ -24,18 +24,18 @@ def plot_loss_curves(results):
     accuracy = results['train_acc']
     test_accuracy = results['val_acc']
 
-    epochs = range(len(results['train_loss']))
+    epochs = range(len(results['train_loss'])) 
 
-    plt.figure(figsize=(15, 7))
+    plt.figure(figsize=(15, 7)) # 创建一个宽 15 英寸、高 7 英寸的画布
 
     # 绘制 Loss 曲线
-    plt.subplot(1, 2, 1)
-    plt.plot(epochs, loss, label='train_loss')
+    plt.subplot(1, 2, 1) # 将画布分为 1 行 2 列，并激活左侧的第一个区域
+    plt.plot(epochs, loss, label='train_loss') # 绘制折线图
     plt.plot(epochs, test_loss, label='val_loss')
     plt.title('Training and Validation Loss')
     plt.xlabel('Epochs')
     plt.ylabel('Loss')
-    plt.legend()
+    plt.legend() # 显示图例，方便观察是否过拟合
 
 
     # 绘制 Accuracy 曲线
@@ -61,7 +61,6 @@ def plot_confusion_matrix(y_true, y_pred, classes):
     plt.title('Confusion Matrix')
     plt.ylabel('True Label')
     plt.xlabel('Predicted Label')
-    # os.makedirs("results", exist_ok=True)
     path = Path("results")
     path.mkdir(parents=True, exist_ok=True)
     plt.savefig(path / "confusion_matrix.png")
