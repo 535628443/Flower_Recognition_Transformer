@@ -10,3 +10,6 @@ models/
 output/
 logs/
 .DS_Store
+test_utils.py
+results
+test_output
